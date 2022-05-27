@@ -22,18 +22,66 @@ const parts = [
 
 ]
 
-// list of each part number and qty for check-off in the "detailsList" element
+// list of each part number and qty for check-off in the "detailsList" element (Map)
+var newO = document.querySelector("#detailsList");
 
-// if parts requiring special handling exist (in aisle B3), list of items needing 
+var newL = parts.map(function(element) {
+        return `${element.qty} (${element.partNbr})  ${element.partDescr}\n`;
+});
+var newN = document.createElement("li");
+newN.innerText = (newL);
+console.log(newL);
+newO.append(newN);
+      
+
+// if parts requiring special handling exist (in aisle B3), list of items needing (SOME)
 // special packaging in the "specialPackaging" element, else remove element
+for (var i = 0; i < parts.length; i++) {
+    if(parts[i].aisle === ("B3")) {
+     var spc = document.querySelector("#specialPackaging");
+     spc.innerHTML = ("Special Packaging Required\n" );
+     console.log(spc);
 
-// if hazardous parts exist (in aisle J4), let employee know in the "hazardousMaterials"
+ }
+}
+
+
+// if hazardous parts exist (in aisle J4), let employee know in the "hazardousMaterials" (filter)
 // element and remind them to get gloves, else remove element
+for (var i = 0; i < parts.length; i++) {
+    if(parts[i].aisle === ("J4")) {
+     var waste = document.querySelector("#hazardousMaterials");
+     waste.innerHTML = ("Hazardous Materials USE GLOVES!!");
+     console.log(waste);
 
-// if all items in the order are small parts (aisle H1), then let employee know that they should take 
+    }
+}
+
+// if all items in the order are small parts (aisle H1), then let employee know that they should take (every)
 // a basket and go dirctly to aisle H1
+var smlItems= document.querySelector("#smallItemsOnly");
+let result = parts.every(sml);
+
+function sml( el, index, arr) {
+    if (parts.aisle === ("H1")) {
+        smlItems.innerHTML = ("Take a basket and go directly to aisle H1");
+    } else {
+        smlItems.remove();
+    }
+ }
 
 // if there are large items (anthing in aisles S, T, or U), then let the employee know in the "forkiftNeeded"
 // element that they will need to reserve a forklift, else remove the element
 
-// sum up the total number of parts and append that number to the text already in "totalItems" element
+var larItems= document.querySelector("#forkLiftNeeded");
+let result2 = parts.every(lar);
+
+function lar( el, index, arr) {
+    if (parts.aisle === ("S")) {
+        larItems.innerHTML = ("You will need to reserve a forklift ");
+    } else {
+        larItems.remove();
+    }
+ }
+
+// sum up the total number of parts and append that number to the text already in "totalItems" element (REDUCE)

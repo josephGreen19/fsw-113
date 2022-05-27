@@ -6,7 +6,8 @@
 
 // modify this script to use the first day of the month the user selects in place of the const today 
 
-const today = new Date('5/1/2021')
+const today = new Date();
+//console.log(today)
 const month = today.getMonth()
 let days
 switch (month) {
@@ -45,3 +46,34 @@ while ( y < remainder) {
     document.getElementById('calendarDays').innerHTML += "<div class='blankDay'>&nbsp;</div>"
     y++
 }
+
+const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+];
+
+
+
+for (var i = 0; i < months.length; i++) {
+    allM.append(new Option(months[i], i+1 ));
+ }
+
+ 
+ var btn = document.querySelector("button");
+ btn.addEventListener("click",printCalendar);
+ function printCalendar(){
+var allM = document.querySelector("#allM").value;
+var allY = document.querySelector("#allY").value;
+
+  console.log(allM, allY);
+ }
