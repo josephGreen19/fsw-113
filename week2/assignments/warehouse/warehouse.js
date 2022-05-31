@@ -85,3 +85,5 @@ function lar( el, index, arr) {
  }
 
 // sum up the total number of parts and append that number to the text already in "totalItems" element (REDUCE)
+var all =document.querySelector("#totalItems");
+
