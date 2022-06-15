@@ -28,8 +28,7 @@ console.log(langs);
 
 
 let result = langs.includes(language);
-   
-    
+let lang = "JavaScript";
 
 
 
