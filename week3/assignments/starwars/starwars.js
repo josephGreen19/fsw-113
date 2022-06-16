@@ -10,7 +10,7 @@ function fetchData() {
     getFromSWAPI(item,type);
 }
 
-function getFromSWAPI(type, item) {
+function getFromSWAPI(item, type) {
     // assign values to any necessary variables
     fetch(`https://swapi.dev/api/${type}/${item}`)
     .then(function (response) {
