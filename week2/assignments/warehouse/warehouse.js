@@ -26,24 +26,43 @@ const parts = [
 var newO = document.querySelector("#detailsList");
 
 var newL = parts.map(function(element) {
-        return `${element.qty} (${element.partNbr})  ${element.partDescr}\n`;
+        return ` <input type="checkbox" value = "${element.partNbr}"> ${element.qty} (${element.partNbr})  ${element.partDescr}`;
 });
-var newN = document.createElement("li");
-newN.innerText = (newL);
 console.log(newL);
-newO.append(newN);
+newL.forEach(function displayPart(part) {
+    var newN = document.createElement("li");
+    newN.innerHTML = part;
+    newO.append(newN);
+});
+
+
+
+
       
 
 // if parts requiring special handling exist (in aisle B3), list of items needing (SOME)
 // special packaging in the "specialPackaging" element, else remove element
-for (var i = 0; i < parts.length; i++) {
-    if(parts[i].aisle === ("B3")) {
-     var spc = document.querySelector("#specialPackaging");
-     spc.innerHTML = ("Special Packaging Required\n" );
-     console.log(spc);
+var spc = document.querySelector("#specialPackaging");
 
- }
-}
+var filteredData = parts.filter(function filterData(part) {
+    return part.aisle === ("B3");
+});
+
+filteredData.forEach(function display2(part) {
+    var new2 = document.createElement("li");
+    new2.innerHTML = part;
+    spc.innerHTML = ("Special Packaging Required" );
+    spc.append(new2);
+});
+
+// // for (var i = 0; i < parts.length; i++) {
+// //     if(parts[i].aisle === ("B3")) {
+// //      var spc = document.querySelector("#specialPackaging");
+// //      spc.innerHTML = ("Special Packaging Required\n" );
+// //      console.log(spc);
+
+//  }
+// }
 
 
 // if hazardous parts exist (in aisle J4), let employee know in the "hazardousMaterials" (filter)
@@ -63,12 +82,15 @@ var smlItems= document.querySelector("#smallItemsOnly");
 let result = parts.every(sml);
 
 function sml( el, index, arr) {
-    if (parts.aisle === ("H1")) {
+    return el.aisle ===("H1");
+}
+
+    if (result) {
         smlItems.innerHTML = ("Take a basket and go directly to aisle H1");
     } else {
         smlItems.remove();
     }
- }
+ 
 
 // if there are large items (anthing in aisles S, T, or U), then let the employee know in the "forkiftNeeded"
 // element that they will need to reserve a forklift, else remove the element
