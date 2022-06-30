@@ -15,7 +15,7 @@ const certGrade = document.querySelector("#certGrade");
 
 // Add am event listener that responds to the click of the "print" button by calling a function to instantiate
 //  a new student object, and another function to print the certificate.
-document.querySelector("print").addEventListener("click", () => {
+document.querySelector("#print").addEventListener("click", () => {
     createNewStudent ();
     completeCertificate(student);
     
@@ -26,7 +26,7 @@ document.querySelector("print").addEventListener("click", () => {
 // Add an event listener that responds to the click of the reset button by resetting all the values
 // both in the form and in the certificate.
 
-document.querySelector("reset").addEventListener("click", () => {
+document.querySelector("#reset").addEventListener("click", () => {
    studentName.value= "";
    className.value= "";
    studentScores.value= "";
@@ -41,7 +41,7 @@ document.querySelector("reset").addEventListener("click", () => {
 // Create a function that instantiates a new student object with the input from the HTML form.
 
 function createNewStudent () {
-  let studentScoresArr = toNumArry(studentScores.value);
+  let studentScoresArr =toNumArry(studentScores.value);
   let possibleScoresArr =toNumArry(possibleScores.value);
     student = new Student(studentName.value, className.value, studentScoresArr, possibleScoresArr);
     completeCertificate(student);
@@ -51,8 +51,8 @@ function createNewStudent () {
 // Create a function that fills in the student's name, class name, and calculated grade on the certificate .
 
 function completeCertificate(student) {
-  certStudentName.innertext= student.getsName();
-  certClassName.innertext= student.getcName();
+  certStudentName.innertext= student.getSname();
+  certClassName.innertext= student.getCname();
   certGrade.innertext= student.getLetterGrade();
 
 }
@@ -68,4 +68,4 @@ function cstStringNumArray(str) {
 
 
 
-console.log(cstStringNumArray("10,20,30,40,50"));
+//console.log(cstStringNumArray("10,20,30,40,50"));
