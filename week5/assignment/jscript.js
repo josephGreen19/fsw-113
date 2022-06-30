@@ -1,5 +1,5 @@
 // Declare any necessary variables.
-let student;
+
 const studentName = document.querySelector("#studentName");
 const className = document.querySelector("#className");
 const studentScores = document.querySelector("#studentScores");
@@ -16,7 +16,7 @@ const certGrade = document.querySelector("#certGrade");
 // Add am event listener that responds to the click of the "print" button by calling a function to instantiate
 //  a new student object, and another function to print the certificate.
 document.querySelector("#print").addEventListener("click", () => {
-    createNewStudent ();
+   let student= createNewStudent ();
     completeCertificate(student);
     
 });
@@ -43,17 +43,17 @@ document.querySelector("#reset").addEventListener("click", () => {
 function createNewStudent () {
   let studentScoresArr =toNumArry(studentScores.value);
   let possibleScoresArr =toNumArry(possibleScores.value);
-    student = new Student(studentName.value, className.value, studentScoresArr, possibleScoresArr);
-    completeCertificate(student);
+    return new Student(studentName.value, className.value, studentScoresArr, possibleScoresArr);
+  
 }
 
 
 // Create a function that fills in the student's name, class name, and calculated grade on the certificate .
 
 function completeCertificate(student) {
-  certStudentName.innertext= student.getSname();
-  certClassName.innertext= student.getCname();
-  certGrade.innertext= student.getLetterGrade();
+  certStudentName.innerHTML= student.getSname();
+  certClassName.innerHTML= student.getCname();
+  certGrade.innerHTML= student.getLetterGrade();
 
 }
 
@@ -62,7 +62,7 @@ function completeCertificate(student) {
 // Create a function that converts the contents of a comma-separated text string to a numeric array.
 // You can use this function when instantiating the arrays in the student object.
 
-function cstStringNumArray(str) {
+function toNumArry(str) {
     return str.split(',').map(score => Number(score.trim()));
 }
 

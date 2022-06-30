@@ -20,7 +20,7 @@ class Student {
         return this.possibleScores.reduce((prevValue,currValue) => prevValue + currValue);
     }
     getGrade() {
-        return this.getTotalScores() / this.possibleScores() *100;
+        return this.getTotalScores() / this.getPossibleScores() *100;
     }
     getLetterGrade(){
         if(this.getGrade() >= 90) return "A";
