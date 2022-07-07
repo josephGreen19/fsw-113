@@ -1,7 +1,12 @@
 // Create a variable of the right kind and in the right place such that each new bug that is added can increment that number
 
 class Bug {
-    constructor() {
+    constructor(reportedBy,system,subSystem,bugDesc) {
+        this.reportedBy = reportedBy;
+        this.system = system;
+        this.subSystem = subSystem;
+        this.bugDesc = bugDesc ;
+
         // This constructor should be set up to accept the four user-input values from index.html: 
         // reportedBy, system, subSystem, and bugDesc
     }
